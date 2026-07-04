@@ -1,0 +1,48 @@
+0;ANGICOS
+1;São Rafael
+2;Itajá
+3;Assú
+4;Jucurutu
+5;Mossoró
+6;Natal
+7;Afonso Bezerra
+8;Pedro Avelino
+9;Fernando Pedrosa
+10;Santana do Matos
+11;Lajes
+12;Santa Cruz
+13;Caicó
+14;São Miguel
+15;São José do Mipibú
+16;São Gonçalo do Amarante
+17;Pau dos Ferros
+18;Parnamirim
+19;Macaíba
+20;Macau
+21;João Câmara
+22;Ipanguaçu
+23;Currais Novos
+24;Ceará-Mirim
+25;Canguaretama
+26;Baraúna
+27;Apodi
+28;Acari
+29;Areia Branca
+30;Extremoz
+31;Goianinha
+32;Monte Alegre
+33;Nísia Floresta
+34;Nova Cruz
+35;Touros
+36;Tangará
+37;São Paulo do Potengi
+38;Santo Antônio
+39;Taipu
+40;Upanema
+41;Pedro Velho
+42;Parelhas
+43;Caraúbas
+44;Alexandria
+45;Jardim de Piranhas
+46;São José do Campestre
+47;Poço Branco
