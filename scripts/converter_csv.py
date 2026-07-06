@@ -3,28 +3,6 @@
 Conversor (via CSV): arquivos km.csv, min.csv e cidades.csv -> arquivos de
 texto (.txt) no formato lido pela classe Grafo em C++.
 
-Este script usa APENAS a biblioteca padrão do Python (módulo csv), sem
-precisar instalar nenhum pacote externo (não depende de openpyxl/pandas).
-
-COMO GERAR OS ARQUIVOS CSV DE ENTRADA:
-No Excel, com cada aba (Km, Min, Cidades) selecionada, use
-"Arquivo -> Salvar Como -> CSV UTF-8 (separado por vírgulas)" e salve com
-os nomes abaixo, dentro da pasta "dados/":
-  - dados/km.csv        (aba "Km" da planilha original)
-  - dados/min.csv       (aba "Min" da planilha original)
-  - dados/cidades.csv   (aba "Cidades" da planilha original)
-
-FORMATO ESPERADO DE CADA CSV (igual ao layout das abas originais):
-  - km.csv / min.csv: primeira linha e primeira coluna são cabeçalhos
-    (id da cidade, de 1 a 48); as demais células são os custos. A
-    diagonal (custo da cidade para ela mesma) fica vazia.
-  - cidades.csv: linhas com 4 colunas (id, nome, id, nome), pois a aba
-    original tem as 48 cidades organizadas em duas colunas lado a lado.
-
-O script detecta automaticamente se o separador usado no CSV é vírgula
-(,) ou ponto e vírgula (;) -- o Excel em português normalmente usa ";"
-porque a vírgula já é o separador decimal.
-
 SAÍDA (gerada em dados/):
   - cidades.txt   -> lista "indice;nome" (uma cidade por linha, 0..N-1)
   - grafo_km.txt  -> grafo com pesos em quilômetros
@@ -47,9 +25,6 @@ CAMINHO_CIDADES = os.path.join(PASTA_DADOS, "cidades.csv")
 
 def detectar_delimitador(caminho):
     """Lê a primeira linha do arquivo e decide se o separador é ',' ou ';'.
-
-    O Excel em português costuma exportar CSV usando ';' como separador
-    de colunas (já que ',' é usado como separador decimal nos números).
     """
     with open(caminho, encoding="utf-8-sig") as f:
         primeira_linha = f.readline()
@@ -61,14 +36,11 @@ def detectar_delimitador(caminho):
 def para_float(texto):
     """Converte uma célula do CSV para float, tratando célula vazia como
     0.0 (diagonal da matriz) e aceitando tanto '.' quanto ',' como
-    separador decimal (dependendo de como o Excel exportou o arquivo).
+    separador decimal
     """
     texto = texto.strip()
     if texto == "":
         return 0.0
-    # Se o número usa vírgula como separador decimal (ex.: "38,8"),
-    # troca por ponto. Cuidado para não estragar números que já usam
-    # ponto (ex.: "38.8") nem separador de milhar.
     if "," in texto and "." not in texto:
         texto = texto.replace(",", ".")
     else:
@@ -77,8 +49,7 @@ def para_float(texto):
 
 
 def ler_matriz_csv(caminho):
-    """Lê uma matriz de custos a partir de um arquivo CSV exportado do
-    Excel (primeira linha e primeira coluna são cabeçalhos/ids).
+    """Lê uma matriz de custos a partir do arquivo CSV exportado
 
     Entrada : caminho do arquivo CSV (ex.: dados/km.csv)
     Saída   : lista de listas (matriz NxN) com os custos em float.
@@ -101,9 +72,6 @@ def ler_matriz_csv(caminho):
 
 def ler_cidades_csv(caminho):
     """Lê a lista de cidades a partir do CSV exportado da aba 'Cidades'.
-
-    A aba tem colunas (id, nome, id, nome) por linha, pois as 48 cidades
-    estão organizadas em duas colunas lado a lado.
 
     Entrada : caminho do arquivo CSV (ex.: dados/cidades.csv)
     Saída   : lista de nomes de cidades, ordenada pelo id (1..N).

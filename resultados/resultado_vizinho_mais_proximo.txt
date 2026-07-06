@@ -1,0 +1,14 @@
+RESULTADOS - Heuristica do Vizinho Mais Proximo + Busca Local
+======================================================================
+Instancia (arquivo de grafo): dados/grafo_km.txt
+Vertice inicial: ANGICOS
+
+Custo da rota construtiva (antes da busca local): 2291.4
+Tempo de construcao: 1.67e-05 s
+
+Custo da rota final (apos busca local 2-opt): 1986.2
+Tempo de busca local: 0.0001098 s
+Tempo total de execucao: 0.0001265 s
+
+Rota final:
+ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> Jucurutu -> Upanema -> Areia Branca -> Mossoró -> Baraúna -> Caraúbas -> Apodi -> São Miguel -> Pau dos Ferros -> Alexandria -> Jardim de Piranhas -> Caicó -> Parelhas -> Acari -> Currais Novos -> Santa Cruz -> Tangará -> São José do Campestre -> Santo Antônio -> Nova Cruz -> Pedro Velho -> Canguaretama -> Goianinha -> Nísia Floresta -> São José do Mipibú -> Monte Alegre -> Macaíba -> São Paulo do Potengi -> São Gonçalo do Amarante -> Parnamirim -> Natal -> Extremoz -> Ceará-Mirim -> Touros -> Taipu -> Poço Branco -> João Câmara -> Macau -> Ipanguaçu -> Assú -> Itajá -> São Rafael -> ANGICOS
