@@ -1,0 +1,16 @@
+# Ignorar arquivos de compilação
+*.o
+*.obj
+*.exe
+
+# Ignorar pasta de configuração local do VS Code
+.vscode/
+
+# Ignorar output de build e binários
+main.exe
+bin/
+
+# Ignorar arquivos temporários e editoriais
+*.log
+*.tmp
+*.swp

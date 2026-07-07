@@ -15,7 +15,7 @@ using namespace std;
 typedef vector<int> Rota;
 
 // Função para ler os arquivos de dados gerados
-vector<vector<double>> carregar_matriz(const string& caminho) {
+static vector<vector<double>> carregar_matriz(const string& caminho) {
     ifstream arquivo(caminho);
     vector<vector<double>> matriz;
     
@@ -184,7 +184,7 @@ double executar_ag(const vector<vector<double>>& matriz, int tamanho_pop, int nu
 // FUNÇÕES AUXILIARES PARA EXTRAIR OS 12 SUBPROBLEMAS 
 
 // Gera sequência de índices contínuos.
-vector<int> gerar_sequencia(int inicio, int fim) {
+static vector<int> gerar_sequencia(int inicio, int fim) {
     vector<int> seq;
     for (int i = inicio; i <= fim; ++i) {
         seq.push_back(i);
@@ -193,7 +193,7 @@ vector<int> gerar_sequencia(int inicio, int fim) {
 }
 
 // Recorta a matriz principal para formar o subgrafo apenas com as cidades escolhidas
-vector<vector<double>> extrair_submatriz(const vector<vector<double>>& matriz_completa, const vector<int>& indices) {
+static vector<vector<double>> extrair_submatriz(const vector<vector<double>>& matriz_completa, const vector<int>& indices) {
     int n = indices.size();
     vector<vector<double>> submatriz(n, vector<double>(n, 0.0));
     
@@ -205,93 +205,3 @@ vector<vector<double>> extrair_submatriz(const vector<vector<double>>& matriz_co
     return submatriz;
 }
 
-int main() {
-    // 1. Carrega as duas matrizes completas (Distância e Tempo)
-    vector<vector<double>> matriz_km = carregar_matriz("dados/grafo_km.txt");
-    vector<vector<double>> matriz_min = carregar_matriz("dados/grafo_min.txt");
-    
-    if (matriz_km.empty() || matriz_min.empty()) {
-        cerr << "Erro: Nao foi possivel carregar as matrizes completas. Verifique a pasta 'dados'." << endl;
-        return 1;
-    }
-
-    // 2. Define os 6 cenários exigidos pela tabela 2 do artigo
-    struct Cenario {
-        string nome;
-        vector<int> indices;
-    };
-    
-    vector<Cenario> cenarios = {
-        {"48 cidades (1 a 48)", gerar_sequencia(0, 47)},
-        {"36 cidades (1 a 36)", gerar_sequencia(0, 35)},
-        {"24 cidades (1 a 24)", gerar_sequencia(0, 23)},
-        {"12 cidades (1 a 12)", gerar_sequencia(0, 11)},
-        {"7 cidades (1,7,8,9,10,11,12)", {0, 6, 7, 8, 9, 10, 11}},
-        {"6 cidades (1 a 6)", gerar_sequencia(0, 5)}
-    };
-    
-    int iteracoes = 20;
-    
-    ofstream arquivo_saida("resultados/resultados_AG.txt");
-    if (!arquivo_saida.is_open()) {
-        cerr << "Erro ao criar o arquivo de saida!" << endl;
-        return 1;
-    }
-    
-    arquivo_saida << "=== RESULTADOS DO ALGORITMO GENETICO (PCV) - 12 PROBLEMAS ===\n\n";
-    cout << "Iniciando bateria de testes do Algoritmo Genetico para os 12 problemas...\n\n";
-    
-    // Lista de tipos para iterar: 0 = Km (Distancia), 1 = Min (Tempo)
-    vector<string> tipos = {"Distancia (Km)", "Tempo (Min)"};
-    vector<vector<vector<double>>> matrizes_base = {matriz_km, matriz_min};
-    
-    // 3. Executa as 20 iterações para os 12 problemas 
-    for (size_t c = 0; c < cenarios.size(); ++c) {
-        const auto& cenario = cenarios[c];
-        for (int t = 0; t < 2; ++t) {
-            
-            // Ajusta a numeração: Km recebe 1 a 6, Min recebe 7 a 12
-            int num_problema = (t == 0) ? (c + 1) : (c + 7);
-            
-            // Recorta a matriz para o tamanho do cenário atual
-            vector<vector<double>> submatriz = extrair_submatriz(matrizes_base[t], cenario.indices);
-            
-            arquivo_saida << "-> Problema " << num_problema << ": " << tipos[t] << " - " << cenario.nome << "\n";
-            cout << "Processando Problema " << num_problema << "/12 (" << tipos[t] << " - " << cenario.nome << ")..." << endl;
-            
-            double menor_custo = numeric_limits<double>::max();
-            double soma_custos = 0.0;
-            double soma_tempos = 0.0;
-            
-            // Executa 20 vezes
-            for (int i = 0; i < iteracoes; ++i) {
-                auto inicio = chrono::high_resolution_clock::now();
-                
-                // Roda o AG (Ajuste populacao e geracoes se o problema for pequeno)
-                int tamanho_pop = (cenario.indices.size() < 10) ? 50 : 100;
-                int geracoes = (cenario.indices.size() < 10) ? 200 : 500;
-                
-                double custo_encontrado = executar_ag(submatriz, tamanho_pop, geracoes, 0.05);
-                
-                auto fim = chrono::high_resolution_clock::now();
-                chrono::duration<double> tempo_decorrido = fim - inicio;
-                
-                if (custo_encontrado < menor_custo) menor_custo = custo_encontrado;
-                soma_custos += custo_encontrado;
-                soma_tempos += tempo_decorrido.count();
-            }
-            
-            // Salva as médias e o menor valor
-            arquivo_saida << fixed << setprecision(2);
-            arquivo_saida << "Menor custo encontrado : " << menor_custo << "\n";
-            arquivo_saida << "Custo medio (20 exec)  : " << soma_custos / iteracoes << "\n";
-            arquivo_saida << "Tempo medio de execucao: " << soma_tempos / iteracoes << " segundos\n";
-            arquivo_saida << "--------------------------------------------------------\n\n";
-        }
-    }
-    
-    arquivo_saida.close();
-    cout << "\nTeste finalizado! Verifique o arquivo 'resultados_AG.txt'." << endl;
-    
-    return 0;
-}
