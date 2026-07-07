@@ -8,11 +8,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 2291.40
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000812 s
 
 Custo da rota final (apos busca local 2-opt): 1986.20
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0006300 s
+Tempo total de execucao: 0.0007112 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> Jucurutu -> Upanema -> Areia Branca -> Mossoró -> Baraúna -> Caraúbas -> Apodi -> São Miguel -> Pau dos Ferros -> Alexandria -> Jardim de Piranhas -> Caicó -> Parelhas -> Acari -> Currais Novos -> Santa Cruz -> Tangará -> São José do Campestre -> Santo Antônio -> Nova Cruz -> Pedro Velho -> Canguaretama -> Goianinha -> Nísia Floresta -> São José do Mipibú -> Monte Alegre -> Macaíba -> São Paulo do Potengi -> São Gonçalo do Amarante -> Parnamirim -> Natal -> Extremoz -> Ceará-Mirim -> Touros -> Taipu -> Poço Branco -> João Câmara -> Macau -> Ipanguaçu -> Assú -> Itajá -> São Rafael -> ANGICOS
@@ -24,11 +24,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 2355.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000710 s
 
 Custo da rota final (apos busca local 2-opt): 1990.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0005824 s
+Tempo total de execucao: 0.0006534 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> Jucurutu -> Upanema -> Areia Branca -> Mossoró -> Baraúna -> Caraúbas -> Apodi -> São Miguel -> Pau dos Ferros -> Alexandria -> Jardim de Piranhas -> Caicó -> Parelhas -> Acari -> Currais Novos -> Santa Cruz -> Tangará -> São José do Campestre -> Santo Antônio -> Nova Cruz -> Pedro Velho -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Monte Alegre -> Macaíba -> São Paulo do Potengi -> Poço Branco -> Taipu -> Ceará-Mirim -> São Gonçalo do Amarante -> Parnamirim -> Natal -> Extremoz -> Touros -> João Câmara -> Macau -> Ipanguaçu -> Assú -> Itajá -> São Rafael -> ANGICOS
@@ -40,11 +40,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1951.50
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000252 s
 
 Custo da rota final (apos busca local 2-opt): 1721.80
-Tempo de busca local: 0.0065270 s
-Tempo total de execucao: 0.0065270 s
+Tempo de busca local: 0.0001919 s
+Tempo total de execucao: 0.0002171 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> São Rafael -> Itajá -> Assú -> Areia Branca -> Mossoró -> Baraúna -> Apodi -> São Miguel -> Pau dos Ferros -> Jucurutu -> Caicó -> Acari -> Currais Novos -> Santa Cruz -> Nova Cruz -> Canguaretama -> Goianinha -> Nísia Floresta -> São José do Mipibú -> Monte Alegre -> Macaíba -> Parnamirim -> Natal -> São Gonçalo do Amarante -> Extremoz -> Ceará-Mirim -> Touros -> João Câmara -> Macau -> Ipanguaçu -> ANGICOS
@@ -56,11 +56,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1950.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000281 s
 
 Custo da rota final (apos busca local 2-opt): 1684.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0002459 s
+Tempo total de execucao: 0.0002740 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> Jucurutu -> São Rafael -> Itajá -> Assú -> Areia Branca -> Mossoró -> Baraúna -> Apodi -> São Miguel -> Pau dos Ferros -> Caicó -> Acari -> Currais Novos -> Santa Cruz -> Nova Cruz -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Parnamirim -> Monte Alegre -> Macaíba -> São Gonçalo do Amarante -> Natal -> Extremoz -> Ceará-Mirim -> Touros -> João Câmara -> Macau -> Ipanguaçu -> ANGICOS
@@ -72,11 +72,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1379.30
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000137 s
 
 Custo da rota final (apos busca local 2-opt): 1333.60
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000295 s
+Tempo total de execucao: 0.0000432 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> São Rafael -> Itajá -> Assú -> Mossoró -> São Miguel -> Pau dos Ferros -> Caicó -> Jucurutu -> Currais Novos -> Santa Cruz -> Macaíba -> São José do Mipibú -> Parnamirim -> Natal -> São Gonçalo do Amarante -> João Câmara -> Macau -> Ipanguaçu -> ANGICOS
@@ -88,11 +88,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1283.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000160 s
 
 Custo da rota final (apos busca local 2-opt): 1234.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000342 s
+Tempo total de execucao: 0.0000502 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> Santana do Matos -> Jucurutu -> São Rafael -> Itajá -> Assú -> Mossoró -> São Miguel -> Pau dos Ferros -> Caicó -> Currais Novos -> Santa Cruz -> Macaíba -> São José do Mipibú -> Parnamirim -> Natal -> São Gonçalo do Amarante -> João Câmara -> Macau -> Ipanguaçu -> ANGICOS
@@ -104,11 +104,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 828.40
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000048 s
 
 Custo da rota final (apos busca local 2-opt): 672.70
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000065 s
+Tempo total de execucao: 0.0000113 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Fernando Pedrosa -> Lajes -> Natal -> Jucurutu -> Santana do Matos -> São Rafael -> Itajá -> Assú -> Mossoró -> ANGICOS
@@ -120,11 +120,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 687.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000077 s
 
 Custo da rota final (apos busca local 2-opt): 606.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000095 s
+Tempo total de execucao: 0.0000172 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Natal -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Itajá -> Assú -> Mossoró -> São Rafael -> ANGICOS
@@ -136,11 +136,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 518.50
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000023 s
 
 Custo da rota final (apos busca local 2-opt): 438.30
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000025 s
+Tempo total de execucao: 0.0000048 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Natal -> Lajes -> Fernando Pedrosa -> Santana do Matos -> ANGICOS
@@ -152,11 +152,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 413.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000025 s
 
 Custo da rota final (apos busca local 2-opt): 364.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000029 s
+Tempo total de execucao: 0.0000054 s
 
 Rota final:
 ANGICOS -> Afonso Bezerra -> Pedro Avelino -> Natal -> Lajes -> Fernando Pedrosa -> Santana do Matos -> ANGICOS
@@ -168,11 +168,11 @@ Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 463.60
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000020 s
 
 Custo da rota final (apos busca local 2-opt): 348.30
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000019 s
+Tempo total de execucao: 0.0000039 s
 
 Rota final:
 ANGICOS -> Jucurutu -> São Rafael -> Itajá -> Assú -> Mossoró -> ANGICOS
@@ -184,11 +184,11 @@ Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 400.00
-Tempo de construcao: 0.0000000 s
+Tempo de construcao: 0.0000018 s
 
 Custo da rota final (apos busca local 2-opt): 305.00
-Tempo de busca local: 0.0000000 s
-Tempo total de execucao: 0.0000000 s
+Tempo de busca local: 0.0000016 s
+Tempo total de execucao: 0.0000034 s
 
 Rota final:
 ANGICOS -> Jucurutu -> São Rafael -> Itajá -> Assú -> Mossoró -> ANGICOS

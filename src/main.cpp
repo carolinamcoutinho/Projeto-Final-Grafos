@@ -32,8 +32,7 @@ static std::vector<Cenario> criarCenarios()
         {"24 cidades (1 a 24)", {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23}},
         {"12 cidades (1 a 12)", {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11}},
         {"7 cidades (1,7,8,9,10,11,12)", {0, 6, 7, 8, 9, 10, 11}},
-        {"6 cidades (1 a 6)", {0, 1, 2, 3, 4, 5}}
-    };
+        {"6 cidades (1 a 6)", {0, 1, 2, 3, 4, 5}}};
 }
 
 static std::vector<std::vector<double>> carregarMatriz(const std::string &caminho)
@@ -150,8 +149,9 @@ struct ResultadoAG
     int problema;
     std::string cenario_nome;
     std::string medida;
-    double custoFinal;
-    double tempoTotal;
+    double menorCusto;
+    double custoMedio;
+    double tempoMedio;
 };
 
 struct ResultadoMemetico
@@ -235,9 +235,9 @@ static void salvarResultadosAG(const std::string &caminho, const std::vector<Res
     for (const auto &r : resultados)
     {
         arquivo << "-> Problema " << r.problema << ": " << r.medida << " - " << r.cenario_nome << "\n";
-        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
-        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
-        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(2) << r.tempoTotal << " segundos\n";
+        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.menorCusto << "\n";
+        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoMedio << "\n";
+        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(5) << r.tempoMedio << " segundos\n";
         arquivo << "--------------------------------------------------------\n\n";
     }
 }
@@ -422,7 +422,7 @@ static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo
 
 static void executarAlgoritmoGenetico(const std::vector<std::vector<double>> &matriz_km, const std::vector<std::vector<double>> &matriz_min)
 {
-    std::cout << "\n>> Executando Algoritmo Genetico...\n";
+    std::cout << "\n>> Executando Algoritmo Genetico (20 execucoes)...\n";
     auto cenarios = criarCenarios();
     std::vector<ResultadoAG> resultados;
 
@@ -439,20 +439,39 @@ static void executarAlgoritmoGenetico(const std::vector<std::vector<double>> &ma
             int geracoes = (static_cast<int>(cenario.indices.size()) < 10) ? 200 : 500;
             double taxa_mutacao = 0.05;
 
-            auto t0 = std::chrono::high_resolution_clock::now();
-            double custoFinal = executar_ag(submatriz, tamanho_pop, geracoes, taxa_mutacao);
-            auto t1 = std::chrono::high_resolution_clock::now();
-            double tempoTotal = std::chrono::duration<double>(t1 - t0).count();
+            double menor_custo = std::numeric_limits<double>::max();
+            double soma_custos = 0.0;
+            double soma_tempos = 0.0;
+            int iteracoes = 20;
 
-            std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
-            std::cout << "  Custo final: " << std::fixed << std::setprecision(2) << custoFinal << "\n";
-            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << tempoTotal << " s\n";
+            for (int i = 0; i < iteracoes; ++i)
+            {
+                auto t0 = std::chrono::high_resolution_clock::now();
+                double custo_encontrado = executar_ag(submatriz, tamanho_pop, geracoes, taxa_mutacao);
+                auto t1 = std::chrono::high_resolution_clock::now();
+
+                double tempo_decorrido = std::chrono::duration<double>(t1 - t0).count();
+
+                if (custo_encontrado < menor_custo)
+                    menor_custo = custo_encontrado;
+                soma_custos += custo_encontrado;
+                soma_tempos += tempo_decorrido;
+            }
+
+            double custoMedio = soma_custos / iteracoes;
+            double tempoMedio = soma_tempos / iteracoes;
+
+            std::cout << "\nCenario: " << cenario.nome << " [" << medida << "] concluido.\n";
+            std::cout << "  Menor custo final: " << std::fixed << std::setprecision(2) << menor_custo << "\n";
+            std::cout << "  Custo medio:       " << std::fixed << std::setprecision(2) << custoMedio << "\n";
+            std::cout << "  Tempo medio:       " << std::fixed << std::setprecision(6) << tempoMedio << " s\n";
 
             resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
                                   cenario.nome,
                                   medida,
-                                  custoFinal,
-                                  tempoTotal});
+                                  menor_custo,
+                                  custoMedio,
+                                  tempoMedio});
         }
     }
 
@@ -534,24 +553,24 @@ int main()
 
         switch (escolha)
         {
-            case 1:
-                executarVizinhoMaisProximo(grafo_km, grafo_min);
-                break;
-            case 2:
-                executarInsercaoMaisBarata(grafo_km, grafo_min);
-                break;
-            case 3:
-                executarAlgoritmoGenetico(matriz_km, matriz_min);
-                break;
-            case 4:
-                executarAlgoritmoMemetico(matriz_km, matriz_min);
-                break;
-            case 5:
-                std::cout << "Encerrando programa.\n";
-                return 0;
-            default:
-                std::cout << "Opcao invalida. Digite 1-5.\n";
-                break;
+        case 1:
+            executarVizinhoMaisProximo(grafo_km, grafo_min);
+            break;
+        case 2:
+            executarInsercaoMaisBarata(grafo_km, grafo_min);
+            break;
+        case 3:
+            executarAlgoritmoGenetico(matriz_km, matriz_min);
+            break;
+        case 4:
+            executarAlgoritmoMemetico(matriz_km, matriz_min);
+            break;
+        case 5:
+            std::cout << "Encerrando programa.\n";
+            return 0;
+        default:
+            std::cout << "Opcao invalida. Digite 1-5.\n";
+            break;
         }
 
         std::cout << "\nPressione Enter para voltar ao menu...";
