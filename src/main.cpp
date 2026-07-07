@@ -94,6 +94,27 @@ static std::string rotaParaString(const Grafo &grafo, const Rota &rota)
     return texto;
 }
 
+static Rota rotacionarRotaParaVerticeInicial(const Rota &rota, int verticeInicial)
+{
+    int n = static_cast<int>(rota.size());
+    int pos = -1;
+    for (int i = 0; i < n; ++i)
+    {
+        if (rota[i] == verticeInicial)
+        {
+            pos = i;
+            break;
+        }
+    }
+
+    if (pos <= 0)
+        return rota;
+
+    Rota rotaRotacionada(rota.begin() + pos, rota.end());
+    rotaRotacionada.insert(rotaRotacionada.end(), rota.begin(), rota.begin() + pos);
+    return rotaRotacionada;
+}
+
 struct ResultadoVizinho
 {
     int problema;
@@ -364,6 +385,7 @@ static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo
             double custoConstrutivo = subgrafo.custoRota(rotaConstrutiva);
             auto t1 = std::chrono::high_resolution_clock::now();
             Rota rotaFinal = buscaLocalShift(subgrafo, rotaConstrutiva);
+            rotaFinal = rotacionarRotaParaVerticeInicial(rotaFinal, 0);
             double custoFinal = subgrafo.custoRota(rotaFinal);
             auto t2 = std::chrono::high_resolution_clock::now();
 
@@ -384,7 +406,7 @@ static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo
                                   cenario.nome,
                                   medida,
                                   arquivo_grafo,
-                                  subgrafo.nomeDoVertice(0),
+                                  "ANGICOS",
                                   custoConstrutivo,
                                   tempoConstrucao.count(),
                                   custoFinal,
