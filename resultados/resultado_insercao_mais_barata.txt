@@ -2,194 +2,194 @@ RESULTADOS - Heuristica da Insercao Mais Barata + Busca Local Shift
 ======================================================================
 
 ======================================================================
-PROBLEMA 1 - Cenario: 48 cidades (1 a 48) - Medida: Km
+PROBLEMA 1 - Cenario: 48 cidades (1 a 48) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 2108.00
-Tempo de construcao: 0.0000382 s
+Tempo de construcao: 0.0007347 s
 
 Custo da rota final (apos busca local Shift): 2043.20
-Tempo de busca local: 0.0000644 s
-Tempo total de execucao: 0.0001026 s
+Tempo de busca local: 0.0005005 s
+Tempo total de execucao: 0.0012352 s
 
 Rota final:
-ANGICOS -> São Rafael -> Santana do Matos -> Jucurutu -> Natal -> Parnamirim -> São Gonçalo do Amarante -> Extremoz -> Ceará-Mirim -> Touros -> Taipu -> Poço Branco -> João Câmara -> São Paulo do Potengi -> Macaíba -> Monte Alegre -> São José do Mipibú -> Nísia Floresta -> Goianinha -> Canguaretama -> Pedro Velho -> Nova Cruz -> Santo Antônio -> São José do Campestre -> Tangará -> Santa Cruz -> Currais Novos -> Acari -> Parelhas -> Caicó -> Jardim de Piranhas -> Alexandria -> Pau dos Ferros -> São Miguel -> Apodi -> Caraúbas -> Upanema -> Baraúna -> Mossoró -> Areia Branca -> Assú -> Itajá -> Ipanguaçu -> Macau -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> ANGICOS
+Pau dos Ferros -> São Miguel -> Apodi -> Caraúbas -> Upanema -> Baraúna -> Mossoró -> Areia Branca -> Assú -> Itajá -> Ipanguaçu -> Macau -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> ANGICOS -> São Rafael -> Santana do Matos -> Jucurutu -> Natal -> Parnamirim -> São Gonçalo do Amarante -> Extremoz -> Ceará-Mirim -> Touros -> Taipu -> Poço Branco -> João Câmara -> São Paulo do Potengi -> Macaíba -> Monte Alegre -> São José do Mipibú -> Nísia Floresta -> Goianinha -> Canguaretama -> Pedro Velho -> Nova Cruz -> Santo Antônio -> São José do Campestre -> Tangará -> Santa Cruz -> Currais Novos -> Acari -> Parelhas -> Caicó -> Jardim de Piranhas -> Alexandria -> Pau dos Ferros
 
 ======================================================================
-PROBLEMA 2 - Cenario: 48 cidades (1 a 48) - Medida: min
+PROBLEMA 2 - Cenario: 48 cidades (1 a 48) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 2296.00
-Tempo de construcao: 0.0000390 s
+Tempo de construcao: 0.0004493 s
 
 Custo da rota final (apos busca local Shift): 2231.00
-Tempo de busca local: 0.0000469 s
-Tempo total de execucao: 0.0000859 s
+Tempo de busca local: 0.0002464 s
+Tempo total de execucao: 0.0006957 s
 
 Rota final:
-ANGICOS -> Santana do Matos -> Jucurutu -> São Rafael -> Itajá -> Assú -> Areia Branca -> Mossoró -> Baraúna -> Caraúbas -> Apodi -> São Miguel -> Pau dos Ferros -> Alexandria -> Upanema -> Ipanguaçu -> Fernando Pedrosa -> Lajes -> São Paulo do Potengi -> Tangará -> Santa Cruz -> Parelhas -> Caicó -> Jardim de Piranhas -> Acari -> Currais Novos -> São José do Campestre -> Santo Antônio -> Nova Cruz -> Pedro Velho -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Monte Alegre -> Macaíba -> Parnamirim -> Natal -> Touros -> Extremoz -> São Gonçalo do Amarante -> Ceará-Mirim -> Taipu -> Poço Branco -> João Câmara -> Macau -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+São Miguel -> Pau dos Ferros -> Alexandria -> Upanema -> Ipanguaçu -> Fernando Pedrosa -> Lajes -> São Paulo do Potengi -> Tangará -> Santa Cruz -> Parelhas -> Caicó -> Jardim de Piranhas -> Acari -> Currais Novos -> São José do Campestre -> Santo Antônio -> Nova Cruz -> Pedro Velho -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Monte Alegre -> Macaíba -> Parnamirim -> Natal -> Touros -> Extremoz -> São Gonçalo do Amarante -> Ceará-Mirim -> Taipu -> Poço Branco -> João Câmara -> Macau -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Santana do Matos -> Jucurutu -> São Rafael -> Itajá -> Assú -> Areia Branca -> Mossoró -> Baraúna -> Caraúbas -> Apodi -> São Miguel
 
 ======================================================================
-PROBLEMA 3 - Cenario: 36 cidades (1 a 36) - Medida: Km
+PROBLEMA 3 - Cenario: 36 cidades (1 a 36) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1839.90
-Tempo de construcao: 0.0000173 s
+Tempo de construcao: 0.0001918 s
 
 Custo da rota final (apos busca local Shift): 1808.80
-Tempo de busca local: 0.0000240 s
-Tempo total de execucao: 0.0000413 s
+Tempo de busca local: 0.0001615 s
+Tempo total de execucao: 0.0003533 s
 
 Rota final:
-ANGICOS -> São Rafael -> Santana do Matos -> Jucurutu -> Natal -> Extremoz -> Touros -> João Câmara -> Ceará-Mirim -> São Gonçalo do Amarante -> Parnamirim -> Macaíba -> Monte Alegre -> São José do Mipibú -> Nísia Floresta -> Goianinha -> Canguaretama -> Nova Cruz -> Santa Cruz -> Currais Novos -> Acari -> Caicó -> Pau dos Ferros -> São Miguel -> Apodi -> Baraúna -> Mossoró -> Areia Branca -> Assú -> Itajá -> Ipanguaçu -> Macau -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> ANGICOS
+Pau dos Ferros -> São Miguel -> Apodi -> Baraúna -> Mossoró -> Areia Branca -> Assú -> Itajá -> Ipanguaçu -> Macau -> Afonso Bezerra -> Pedro Avelino -> Lajes -> Fernando Pedrosa -> ANGICOS -> São Rafael -> Santana do Matos -> Jucurutu -> Natal -> Extremoz -> Touros -> João Câmara -> Ceará-Mirim -> São Gonçalo do Amarante -> Parnamirim -> Macaíba -> Monte Alegre -> São José do Mipibú -> Nísia Floresta -> Goianinha -> Canguaretama -> Nova Cruz -> Santa Cruz -> Currais Novos -> Acari -> Caicó -> Pau dos Ferros
 
 ======================================================================
-PROBLEMA 4 - Cenario: 36 cidades (1 a 36) - Medida: min
+PROBLEMA 4 - Cenario: 36 cidades (1 a 36) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1871.00
-Tempo de construcao: 0.0000184 s
+Tempo de construcao: 0.0001822 s
 
 Custo da rota final (apos busca local Shift): 1762.00
-Tempo de busca local: 0.0000329 s
-Tempo total de execucao: 0.0000513 s
+Tempo de busca local: 0.0002534 s
+Tempo total de execucao: 0.0004356 s
 
 Rota final:
-ANGICOS -> São Rafael -> Itajá -> Assú -> Ipanguaçu -> Macau -> Areia Branca -> Mossoró -> Baraúna -> Apodi -> São Miguel -> Pau dos Ferros -> Caicó -> Acari -> Currais Novos -> Santa Cruz -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Macaíba -> Monte Alegre -> Nova Cruz -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Parnamirim -> Natal -> São Gonçalo do Amarante -> Ceará-Mirim -> Extremoz -> Touros -> João Câmara -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+São Miguel -> Pau dos Ferros -> Caicó -> Acari -> Currais Novos -> Santa Cruz -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Macaíba -> Monte Alegre -> Nova Cruz -> Canguaretama -> Goianinha -> São José do Mipibú -> Nísia Floresta -> Parnamirim -> Natal -> São Gonçalo do Amarante -> Ceará-Mirim -> Extremoz -> Touros -> João Câmara -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> São Rafael -> Itajá -> Assú -> Ipanguaçu -> Macau -> Areia Branca -> Mossoró -> Baraúna -> Apodi -> São Miguel
 
 ======================================================================
-PROBLEMA 5 - Cenario: 24 cidades (1 a 24) - Medida: Km
+PROBLEMA 5 - Cenario: 24 cidades (1 a 24) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1487.60
-Tempo de construcao: 0.0000077 s
+Tempo de construcao: 0.0001037 s
 
 Custo da rota final (apos busca local Shift): 1454.30
-Tempo de busca local: 0.0000084 s
-Tempo total de execucao: 0.0000161 s
+Tempo de busca local: 0.0001017 s
+Tempo total de execucao: 0.0002054 s
 
 Rota final:
-ANGICOS -> Fernando Pedrosa -> Santana do Matos -> São Rafael -> Jucurutu -> Currais Novos -> Santa Cruz -> Caicó -> Pau dos Ferros -> São Miguel -> Mossoró -> Assú -> Itajá -> Ipanguaçu -> Macau -> João Câmara -> São Gonçalo do Amarante -> Natal -> Parnamirim -> São José do Mipibú -> Macaíba -> Lajes -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+São Miguel -> Mossoró -> Assú -> Itajá -> Ipanguaçu -> Macau -> João Câmara -> São Gonçalo do Amarante -> Natal -> Parnamirim -> São José do Mipibú -> Macaíba -> Lajes -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Fernando Pedrosa -> Santana do Matos -> São Rafael -> Jucurutu -> Currais Novos -> Santa Cruz -> Caicó -> Pau dos Ferros -> São Miguel
 
 ======================================================================
-PROBLEMA 6 - Cenario: 24 cidades (1 a 24) - Medida: min
+PROBLEMA 6 - Cenario: 24 cidades (1 a 24) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 1403.00
-Tempo de construcao: 0.0000075 s
+Tempo de construcao: 0.0001057 s
 
 Custo da rota final (apos busca local Shift): 1223.00
-Tempo de busca local: 0.0000147 s
-Tempo total de execucao: 0.0000222 s
+Tempo de busca local: 0.0001830 s
+Tempo total de execucao: 0.0002887 s
 
 Rota final:
-ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Pedro Avelino -> Afonso Bezerra -> Macau -> João Câmara -> São Gonçalo do Amarante -> Natal -> Parnamirim -> São José do Mipibú -> Macaíba -> Santa Cruz -> Currais Novos -> Jucurutu -> Caicó -> Pau dos Ferros -> São Miguel -> Mossoró -> Ipanguaçu -> Assú -> Itajá -> São Rafael -> ANGICOS
+Macaíba -> Santa Cruz -> Currais Novos -> Jucurutu -> Caicó -> Pau dos Ferros -> São Miguel -> Mossoró -> Ipanguaçu -> Assú -> Itajá -> São Rafael -> ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Pedro Avelino -> Afonso Bezerra -> Macau -> João Câmara -> São Gonçalo do Amarante -> Natal -> Parnamirim -> São José do Mipibú -> Macaíba
 
 ======================================================================
-PROBLEMA 7 - Cenario: 12 cidades (1 a 12) - Medida: Km
+PROBLEMA 7 - Cenario: 12 cidades (1 a 12) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 748.20
-Tempo de construcao: 0.0000031 s
+Tempo de construcao: 0.0000195 s
 
 Custo da rota final (apos busca local Shift): 711.00
-Tempo de busca local: 0.0000017 s
-Tempo total de execucao: 0.0000048 s
+Tempo de busca local: 0.0000111 s
+Tempo total de execucao: 0.0000306 s
 
 Rota final:
-ANGICOS -> Mossoró -> Assú -> Itajá -> São Rafael -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+Mossoró -> Assú -> Itajá -> São Rafael -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Mossoró
 
 ======================================================================
-PROBLEMA 8 - Cenario: 12 cidades (1 a 12) - Medida: min
+PROBLEMA 8 - Cenario: 12 cidades (1 a 12) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 659.00
-Tempo de construcao: 0.0000023 s
+Tempo de construcao: 0.0000181 s
 
 Custo da rota final (apos busca local Shift): 609.00
-Tempo de busca local: 0.0000013 s
-Tempo total de execucao: 0.0000036 s
+Tempo de busca local: 0.0000111 s
+Tempo total de execucao: 0.0000292 s
 
 Rota final:
-ANGICOS -> Itajá -> Assú -> Mossoró -> São Rafael -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+Mossoró -> São Rafael -> Jucurutu -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Itajá -> Assú -> Mossoró
 
 ======================================================================
-PROBLEMA 9 - Cenario: 7 cidades (1,7,8,9,10,11,12) - Medida: Km
+PROBLEMA 9 - Cenario: 7 cidades (1,7,8,9,10,11,12) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 448.20
-Tempo de construcao: 0.0000010 s
+Tempo de construcao: 0.0000049 s
 
 Custo da rota final (apos busca local Shift): 438.30
-Tempo de busca local: 0.0000008 s
-Tempo total de execucao: 0.0000018 s
+Tempo de busca local: 0.0000044 s
+Tempo total de execucao: 0.0000093 s
 
 Rota final:
-ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes
 
 ======================================================================
-PROBLEMA 10 - Cenario: 7 cidades (1,7,8,9,10,11,12) - Medida: min
+PROBLEMA 10 - Cenario: 7 cidades (1,7,8,9,10,11,12) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 397.00
-Tempo de construcao: 0.0000042 s
+Tempo de construcao: 0.0000036 s
 
 Custo da rota final (apos busca local Shift): 364.00
-Tempo de busca local: 0.0000022 s
-Tempo total de execucao: 0.0000064 s
+Tempo de busca local: 0.0000038 s
+Tempo total de execucao: 0.0000074 s
 
 Rota final:
-ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS
+Lajes -> Natal -> Pedro Avelino -> Afonso Bezerra -> ANGICOS -> Santana do Matos -> Fernando Pedrosa -> Lajes
 
 ======================================================================
-PROBLEMA 11 - Cenario: 6 cidades (1 a 6) - Medida: Km
+PROBLEMA 11 - Cenario: 6 cidades (1 a 6) - Medida: Distancia (Km)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_km.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 344.90
-Tempo de construcao: 0.0000015 s
+Tempo de construcao: 0.0000073 s
 
 Custo da rota final (apos busca local Shift): 344.90
-Tempo de busca local: 0.0000009 s
-Tempo total de execucao: 0.0000024 s
+Tempo de busca local: 0.0000022 s
+Tempo total de execucao: 0.0000095 s
 
 Rota final:
-ANGICOS -> São Rafael -> Jucurutu -> Assú -> Mossoró -> Itajá -> ANGICOS
+Jucurutu -> Assú -> Mossoró -> Itajá -> ANGICOS -> São Rafael -> Jucurutu
 
 ======================================================================
-PROBLEMA 12 - Cenario: 6 cidades (1 a 6) - Medida: min
+PROBLEMA 12 - Cenario: 6 cidades (1 a 6) - Medida: Tempo (Min)
 ======================================================================
 Instancia (arquivo de grafo): dados/grafo_min.txt
 Vertice inicial: ANGICOS
 
 Custo da rota construtiva (antes da busca local): 306.00
-Tempo de construcao: 0.0000010 s
+Tempo de construcao: 0.0000060 s
 
 Custo da rota final (apos busca local Shift): 305.00
-Tempo de busca local: 0.0000019 s
-Tempo total de execucao: 0.0000029 s
+Tempo de busca local: 0.0000036 s
+Tempo total de execucao: 0.0000096 s
 
 Rota final:
-ANGICOS -> Jucurutu -> São Rafael -> Mossoró -> Assú -> Itajá -> ANGICOS
+Jucurutu -> São Rafael -> Mossoró -> Assú -> Itajá -> ANGICOS -> Jucurutu
 

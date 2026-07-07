@@ -1,52 +1,52 @@
-=== RESULTADOS DO ALGORITMO MEMÉTICO ===
-Busca Local Híbrida Sequencial: 2-opt + Shift + Swap
+=== RESULTADOS DO ALGORITMO MEMETICO ===
+Busca Local Hibrida Sequencial: 2-opt + Shift + Swap
 
 -> Problema 1: Distancia (Km) - 48 cidades (1 a 48)
 Menor custo encontrado : 1942.30
 Custo medio (20 exec)  : 1942.30
-Tempo medio de execucao: 0.47 segundos
+Tempo medio de execucao: 3.84 segundos
 --------------------------------------------------------
 
 -> Problema 2: Tempo (Min) - 48 cidades (1 a 48)
 Menor custo encontrado : 1973.00
 Custo medio (20 exec)  : 1973.00
-Tempo medio de execucao: 0.44 segundos
+Tempo medio de execucao: 4.05 segundos
 --------------------------------------------------------
 
 -> Problema 3: Distancia (Km) - 36 cidades (1 a 36)
 Menor custo encontrado : 1695.00
 Custo medio (20 exec)  : 1695.00
-Tempo medio de execucao: 0.17 segundos
+Tempo medio de execucao: 1.35 segundos
 --------------------------------------------------------
 
 -> Problema 4: Tempo (Min) - 36 cidades (1 a 36)
-Menor custo encontrado : 1663.00
-Custo medio (20 exec)  : 1663.00
-Tempo medio de execucao: 0.17 segundos
+Menor custo encontrado : 1662.00
+Custo medio (20 exec)  : 1662.00
+Tempo medio de execucao: 1.42 segundos
 --------------------------------------------------------
 
 -> Problema 5: Distancia (Km) - 24 cidades (1 a 24)
 Menor custo encontrado : 1321.00
 Custo medio (20 exec)  : 1321.00
-Tempo medio de execucao: 0.06 segundos
+Tempo medio de execucao: 0.44 segundos
 --------------------------------------------------------
 
 -> Problema 6: Tempo (Min) - 24 cidades (1 a 24)
 Menor custo encontrado : 1223.00
 Custo medio (20 exec)  : 1223.00
-Tempo medio de execucao: 0.06 segundos
+Tempo medio de execucao: 0.41 segundos
 --------------------------------------------------------
 
 -> Problema 7: Distancia (Km) - 12 cidades (1 a 12)
 Menor custo encontrado : 672.70
 Custo medio (20 exec)  : 672.70
-Tempo medio de execucao: 0.01 segundos
+Tempo medio de execucao: 0.06 segundos
 --------------------------------------------------------
 
 -> Problema 8: Tempo (Min) - 12 cidades (1 a 12)
 Menor custo encontrado : 606.00
 Custo medio (20 exec)  : 606.00
-Tempo medio de execucao: 0.01 segundos
+Tempo medio de execucao: 0.06 segundos
 --------------------------------------------------------
 
 -> Problema 9: Distancia (Km) - 7 cidades (1,7,8,9,10,11,12)

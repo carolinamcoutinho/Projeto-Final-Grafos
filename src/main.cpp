@@ -94,6 +94,155 @@ static std::string rotaParaString(const Grafo &grafo, const Rota &rota)
     return texto;
 }
 
+struct ResultadoVizinho
+{
+    int problema;
+    std::string cenario_nome;
+    std::string medida;
+    std::string arquivo_grafo;
+    std::string vertice_inicial;
+    double custoConstrutivo;
+    double tempoConstrucao;
+    double custoFinal;
+    double tempoBusca;
+    double tempoTotal;
+    std::string rotaFinal;
+};
+
+struct ResultadoInsercao
+{
+    int problema;
+    std::string cenario_nome;
+    std::string medida;
+    std::string arquivo_grafo;
+    std::string vertice_inicial;
+    double custoConstrutivo;
+    double tempoConstrucao;
+    double custoFinal;
+    double tempoShift;
+    double tempoTotal;
+    std::string rotaFinal;
+};
+
+struct ResultadoAG
+{
+    int problema;
+    std::string cenario_nome;
+    std::string medida;
+    double custoFinal;
+    double tempoTotal;
+};
+
+struct ResultadoMemetico
+{
+    int problema;
+    std::string cenario_nome;
+    std::string medida;
+    double custoFinal;
+    double tempoTotal;
+};
+
+static void salvarResultadosVizinho(const std::string &caminho, const std::vector<ResultadoVizinho> &resultados)
+{
+    std::ofstream arquivo(caminho);
+    if (!arquivo.is_open())
+    {
+        std::cerr << "Erro: nao foi possivel abrir o arquivo " << caminho << " para escrita\n";
+        return;
+    }
+
+    arquivo << "RESULTADOS - Heuristica do Vizinho Mais Proximo + Busca Local 2-opt\n";
+    arquivo << "======================================================================\n\n";
+
+    for (const auto &r : resultados)
+    {
+        arquivo << "======================================================================\n";
+        arquivo << "PROBLEMA " << r.problema << " - Cenario: " << r.cenario_nome << " - Medida: " << r.medida << "\n";
+        arquivo << "======================================================================\n";
+        arquivo << "Instancia (arquivo de grafo): " << r.arquivo_grafo << "\n";
+        arquivo << "Vertice inicial: " << r.vertice_inicial << "\n\n";
+        arquivo << "Custo da rota construtiva (antes da busca local): " << std::fixed << std::setprecision(2) << r.custoConstrutivo << "\n";
+        arquivo << "Tempo de construcao: " << std::fixed << std::setprecision(7) << r.tempoConstrucao << " s\n\n";
+        arquivo << "Custo da rota final (apos busca local 2-opt): " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Tempo de busca local: " << std::fixed << std::setprecision(7) << r.tempoBusca << " s\n";
+        arquivo << "Tempo total de execucao: " << std::fixed << std::setprecision(7) << r.tempoTotal << " s\n\n";
+        arquivo << "Rota final:\n";
+        arquivo << r.rotaFinal << "\n\n";
+    }
+}
+
+static void salvarResultadosInsercao(const std::string &caminho, const std::vector<ResultadoInsercao> &resultados)
+{
+    std::ofstream arquivo(caminho);
+    if (!arquivo.is_open())
+    {
+        std::cerr << "Erro: nao foi possivel abrir o arquivo " << caminho << " para escrita\n";
+        return;
+    }
+
+    arquivo << "RESULTADOS - Heuristica da Insercao Mais Barata + Busca Local Shift\n";
+    arquivo << "======================================================================\n\n";
+
+    for (const auto &r : resultados)
+    {
+        arquivo << "======================================================================\n";
+        arquivo << "PROBLEMA " << r.problema << " - Cenario: " << r.cenario_nome << " - Medida: " << r.medida << "\n";
+        arquivo << "======================================================================\n";
+        arquivo << "Instancia (arquivo de grafo): " << r.arquivo_grafo << "\n";
+        arquivo << "Vertice inicial: " << r.vertice_inicial << "\n\n";
+        arquivo << "Custo da rota construtiva (antes da busca local): " << std::fixed << std::setprecision(2) << r.custoConstrutivo << "\n";
+        arquivo << "Tempo de construcao: " << std::fixed << std::setprecision(7) << r.tempoConstrucao << " s\n\n";
+        arquivo << "Custo da rota final (apos busca local Shift): " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Tempo de busca local: " << std::fixed << std::setprecision(7) << r.tempoShift << " s\n";
+        arquivo << "Tempo total de execucao: " << std::fixed << std::setprecision(7) << r.tempoTotal << " s\n\n";
+        arquivo << "Rota final:\n";
+        arquivo << r.rotaFinal << "\n\n";
+    }
+}
+
+static void salvarResultadosAG(const std::string &caminho, const std::vector<ResultadoAG> &resultados)
+{
+    std::ofstream arquivo(caminho);
+    if (!arquivo.is_open())
+    {
+        std::cerr << "Erro: nao foi possivel abrir o arquivo " << caminho << " para escrita\n";
+        return;
+    }
+
+    arquivo << "=== RESULTADOS DO ALGORITMO GENETICO (PCV) - 12 PROBLEMAS ===\n\n";
+
+    for (const auto &r : resultados)
+    {
+        arquivo << "-> Problema " << r.problema << ": " << r.medida << " - " << r.cenario_nome << "\n";
+        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(2) << r.tempoTotal << " segundos\n";
+        arquivo << "--------------------------------------------------------\n\n";
+    }
+}
+
+static void salvarResultadosMemetico(const std::string &caminho, const std::vector<ResultadoMemetico> &resultados)
+{
+    std::ofstream arquivo(caminho);
+    if (!arquivo.is_open())
+    {
+        std::cerr << "Erro: nao foi possivel abrir o arquivo " << caminho << " para escrita\n";
+        return;
+    }
+
+    arquivo << "=== RESULTADOS DO ALGORITMO MEMETICO ===\n";
+    arquivo << "Busca Local Hibrida Sequencial: 2-opt + Shift + Swap\n\n";
+
+    for (const auto &r : resultados)
+    {
+        arquivo << "-> Problema " << r.problema << ": " << r.medida << " - " << r.cenario_nome << "\n";
+        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
+        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(2) << r.tempoTotal << " segundos\n";
+        arquivo << "--------------------------------------------------------\n\n";
+    }
+}
+
 static void mostrarMenu()
 {
     std::cout << "\n=== Selecionar algoritmo ===\n";
@@ -121,15 +270,17 @@ static void executarVizinhoMaisProximo(const Grafo &grafo_km, const Grafo &grafo
 {
     std::cout << "\n>> Executando Vizinho Mais Proximo + 2-opt...\n";
     auto cenarios = criarCenarios();
+    std::vector<ResultadoVizinho> resultados;
 
-    for (const auto &cenario : cenarios)
+    for (size_t idx = 0; idx < cenarios.size(); ++idx)
     {
+        const auto &cenario = cenarios[idx];
         for (int tipo = 0; tipo < 2; ++tipo)
         {
             const Grafo &grafo = (tipo == 0) ? grafo_km : grafo_min;
             const std::string medida = (tipo == 0) ? "Distancia (Km)" : "Tempo (Min)";
-            Grafo subgrafo = grafo;
-            subgrafo = Grafo();
+            const std::string arquivo_grafo = (tipo == 0) ? "dados/grafo_km.txt" : "dados/grafo_min.txt";
+            Grafo subgrafo;
             subgrafo.n = static_cast<int>(cenario.indices.size());
             subgrafo.custo.assign(subgrafo.n, std::vector<double>(subgrafo.n, 0.0));
             subgrafo.nomes.assign(subgrafo.n, "");
@@ -153,6 +304,7 @@ static void executarVizinhoMaisProximo(const Grafo &grafo_km, const Grafo &grafo
             std::chrono::duration<double> tempoConstrucao = t1 - t0;
             std::chrono::duration<double> tempoBusca = t2 - t1;
             std::chrono::duration<double> tempoTotal = t2 - t0;
+            std::string rotaFinalTexto = rotaParaString(subgrafo, rotaFinal);
 
             std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
             std::cout << "  Custo construtivo: " << std::fixed << std::setprecision(2) << custoConstrutivo << "\n";
@@ -160,23 +312,41 @@ static void executarVizinhoMaisProximo(const Grafo &grafo_km, const Grafo &grafo
             std::cout << "  Tempo construcao: " << std::fixed << std::setprecision(6) << tempoConstrucao.count() << " s\n";
             std::cout << "  Tempo 2-opt:      " << std::fixed << std::setprecision(6) << tempoBusca.count() << " s\n";
             std::cout << "  Tempo total:      " << std::fixed << std::setprecision(6) << tempoTotal.count() << " s\n";
-            std::cout << "  Rota final: " << rotaParaString(subgrafo, rotaFinal) << "\n";
+            std::cout << "  Rota final: " << rotaFinalTexto << "\n";
+
+            resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
+                                  cenario.nome,
+                                  medida,
+                                  arquivo_grafo,
+                                  subgrafo.nomeDoVertice(0),
+                                  custoConstrutivo,
+                                  tempoConstrucao.count(),
+                                  custoFinal,
+                                  tempoBusca.count(),
+                                  tempoTotal.count(),
+                                  rotaFinalTexto});
         }
     }
+
+    salvarResultadosVizinho("resultados/resultado_vizinho_mais_proximo.txt", resultados);
+    std::cout << "\nResultados gravados em resultados/resultado_vizinho_mais_proximo.txt\n";
 }
 
 static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo_min)
 {
     std::cout << "\n>> Executando Insercao Mais Barata + Busca Local Shift...\n";
     auto cenarios = criarCenarios();
+    std::vector<ResultadoInsercao> resultados;
 
-    for (const auto &cenario : cenarios)
+    for (size_t idx = 0; idx < cenarios.size(); ++idx)
     {
+        const auto &cenario = cenarios[idx];
         for (int tipo = 0; tipo < 2; ++tipo)
         {
             const Grafo &grafo = (tipo == 0) ? grafo_km : grafo_min;
             const std::string medida = (tipo == 0) ? "Distancia (Km)" : "Tempo (Min)";
-            Grafo subgrafo = Grafo();
+            const std::string arquivo_grafo = (tipo == 0) ? "dados/grafo_km.txt" : "dados/grafo_min.txt";
+            Grafo subgrafo;
             subgrafo.n = static_cast<int>(cenario.indices.size());
             subgrafo.custo.assign(subgrafo.n, std::vector<double>(subgrafo.n, 0.0));
             subgrafo.nomes.assign(subgrafo.n, "");
@@ -200,6 +370,7 @@ static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo
             std::chrono::duration<double> tempoConstrucao = t1 - t0;
             std::chrono::duration<double> tempoShift = t2 - t1;
             std::chrono::duration<double> tempoTotal = t2 - t0;
+            std::string rotaFinalTexto = rotaParaString(subgrafo, rotaFinal);
 
             std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
             std::cout << "  Custo construtivo: " << std::fixed << std::setprecision(2) << custoConstrutivo << "\n";
@@ -207,18 +378,35 @@ static void executarInsercaoMaisBarata(const Grafo &grafo_km, const Grafo &grafo
             std::cout << "  Tempo construcao: " << std::fixed << std::setprecision(6) << tempoConstrucao.count() << " s\n";
             std::cout << "  Tempo shift:       " << std::fixed << std::setprecision(6) << tempoShift.count() << " s\n";
             std::cout << "  Tempo total:       " << std::fixed << std::setprecision(6) << tempoTotal.count() << " s\n";
-            std::cout << "  Rota final: " << rotaParaString(subgrafo, rotaFinal) << "\n";
+            std::cout << "  Rota final: " << rotaFinalTexto << "\n";
+
+            resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
+                                  cenario.nome,
+                                  medida,
+                                  arquivo_grafo,
+                                  subgrafo.nomeDoVertice(0),
+                                  custoConstrutivo,
+                                  tempoConstrucao.count(),
+                                  custoFinal,
+                                  tempoShift.count(),
+                                  tempoTotal.count(),
+                                  rotaFinalTexto});
         }
     }
+
+    salvarResultadosInsercao("resultados/resultado_insercao_mais_barata.txt", resultados);
+    std::cout << "\nResultados gravados em resultados/resultado_insercao_mais_barata.txt\n";
 }
 
 static void executarAlgoritmoGenetico(const std::vector<std::vector<double>> &matriz_km, const std::vector<std::vector<double>> &matriz_min)
 {
     std::cout << "\n>> Executando Algoritmo Genetico...\n";
     auto cenarios = criarCenarios();
+    std::vector<ResultadoAG> resultados;
 
-    for (const auto &cenario : cenarios)
+    for (size_t idx = 0; idx < cenarios.size(); ++idx)
     {
+        const auto &cenario = cenarios[idx];
         for (int tipo = 0; tipo < 2; ++tipo)
         {
             const auto &matriz = (tipo == 0) ? matriz_km : matriz_min;
@@ -232,21 +420,33 @@ static void executarAlgoritmoGenetico(const std::vector<std::vector<double>> &ma
             auto t0 = std::chrono::high_resolution_clock::now();
             double custoFinal = executar_ag(submatriz, tamanho_pop, geracoes, taxa_mutacao);
             auto t1 = std::chrono::high_resolution_clock::now();
+            double tempoTotal = std::chrono::duration<double>(t1 - t0).count();
 
             std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
             std::cout << "  Custo final: " << std::fixed << std::setprecision(2) << custoFinal << "\n";
-            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << std::chrono::duration<double>(t1 - t0).count() << " s\n";
+            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << tempoTotal << " s\n";
+
+            resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
+                                  cenario.nome,
+                                  medida,
+                                  custoFinal,
+                                  tempoTotal});
         }
     }
+
+    salvarResultadosAG("resultados/resultados_AG.txt", resultados);
+    std::cout << "\nResultados gravados em resultados/resultados_AG.txt\n";
 }
 
 static void executarAlgoritmoMemetico(const std::vector<std::vector<double>> &matriz_km, const std::vector<std::vector<double>> &matriz_min)
 {
     std::cout << "\n>> Executando Algoritmo Memetico...\n";
     auto cenarios = criarCenarios();
+    std::vector<ResultadoMemetico> resultados;
 
-    for (const auto &cenario : cenarios)
+    for (size_t idx = 0; idx < cenarios.size(); ++idx)
     {
+        const auto &cenario = cenarios[idx];
         for (int tipo = 0; tipo < 2; ++tipo)
         {
             const auto &matriz = (tipo == 0) ? matriz_km : matriz_min;
@@ -262,12 +462,22 @@ static void executarAlgoritmoMemetico(const std::vector<std::vector<double>> &ma
             AlgoritmoMemetico am(submatriz, tamanho_pop, geracoes, taxa_mutacao, prob_busca_local);
             double custoFinal = am.executar();
             auto t1 = std::chrono::high_resolution_clock::now();
+            double tempoTotal = std::chrono::duration<double>(t1 - t0).count();
 
             std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
             std::cout << "  Custo final: " << std::fixed << std::setprecision(2) << custoFinal << "\n";
-            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << std::chrono::duration<double>(t1 - t0).count() << " s\n";
+            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << tempoTotal << " s\n";
+
+            resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
+                                  cenario.nome,
+                                  medida,
+                                  custoFinal,
+                                  tempoTotal});
         }
     }
+
+    salvarResultadosMemetico("resultados/resultados_memetico.txt", resultados);
+    std::cout << "\nResultados gravados em resultados/resultados_memetico.txt\n";
 }
 
 int main()
