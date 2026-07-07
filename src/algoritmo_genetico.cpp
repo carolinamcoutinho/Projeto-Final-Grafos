@@ -232,7 +232,7 @@ int main() {
     
     int iteracoes = 20;
     
-    ofstream arquivo_saida("resultados_AG.txt");
+    ofstream arquivo_saida("resultados/resultados_AG.txt");
     if (!arquivo_saida.is_open()) {
         cerr << "Erro ao criar o arquivo de saida!" << endl;
         return 1;
