@@ -11,7 +11,7 @@
 
 using namespace std;
 
-// Define "Rota" vetor de inteiros para facilitar a leitura
+// Define que "Rota" é um vetor de inteiros para facilitar a leitura
 typedef vector<int> Rota;
 
 // Função para ler os arquivos de dados gerados
@@ -25,7 +25,7 @@ vector<vector<double>> carregar_matriz(const string& caminho) {
     }
 
     int n;
-    arquivo >> n; // A primeira linha do arquivo contém o número de cidades
+    arquivo >> n; // A primeira linha do arquivo com o número de cidades
 
     matriz.resize(n, vector<double>(n, 0.0));
     for (int i = 0; i < n; ++i) {
@@ -38,7 +38,7 @@ vector<vector<double>> carregar_matriz(const string& caminho) {
     return matriz;
 }
 
-// Calcula o custo total da rota (Distância ou Tempo) garantindo o retorno à origem
+// Calcula o custo total da rota (distância ou tempo) garantindo o retorno à origem
 double calcular_custo(const Rota& rota, const vector<vector<double>>& matriz) {
     double custo = 0.0;
     int n = rota.size();
@@ -88,7 +88,7 @@ Rota cruzamento_ox(const Rota& pai1, const Rota& pai2, mt19937& rng) {
     uniform_int_distribution<int> dist(0, n - 1);
     int corte1 = dist(rng);
     int corte2 = dist(rng);
-    if (corte1 > corte2) swap(corte1, corte2); // Garante que corte1 é menor que corte2
+    if (corte1 > corte2) swap(corte1, corte2); //corte1 menor que corte2
     
     vector<bool> cidade_ja_no_filho(n, false);
     
@@ -98,7 +98,7 @@ Rota cruzamento_ox(const Rota& pai1, const Rota& pai2, mt19937& rng) {
         cidade_ja_no_filho[pai1[i]] = true;
     }
     
-    // Preenche os buracos restantes com os genes do Pai 2 (na ordem que aparecem)
+    // Preenche os buracos restantes com os genes do Pai 2 (na ordem que aparece)
     int ponteiro_pai2 = 0;
     for (int i = 0; i < n; ++i) {
         if (filho[i] == -1) {
@@ -181,11 +181,9 @@ double executar_ag(const vector<vector<double>>& matriz, int tamanho_pop, int nu
     return melhor_custo_global;
 }
 
-// =====================================================================
 // FUNÇÕES AUXILIARES PARA EXTRAIR OS 12 SUBPROBLEMAS 
-// =====================================================================
 
-// Gera uma sequência de índices contínuos.
+// Gera sequência de índices contínuos.
 vector<int> gerar_sequencia(int inicio, int fim) {
     vector<int> seq;
     for (int i = inicio; i <= fim; ++i) {
@@ -217,7 +215,7 @@ int main() {
         return 1;
     }
 
-    // 2. Define os 6 cenários exigidos pela Tabela 2 do artigo base
+    // 2. Define os 6 cenários exigidos pela tabela 2 do artigo
     struct Cenario {
         string nome;
         vector<int> indices;
@@ -243,15 +241,17 @@ int main() {
     arquivo_saida << "=== RESULTADOS DO ALGORITMO GENETICO (PCV) - 12 PROBLEMAS ===\n\n";
     cout << "Iniciando bateria de testes do Algoritmo Genetico para os 12 problemas...\n\n";
     
-    int num_problema = 1;
-    
     // Lista de tipos para iterar: 0 = Km (Distancia), 1 = Min (Tempo)
     vector<string> tipos = {"Distancia (Km)", "Tempo (Min)"};
     vector<vector<vector<double>>> matrizes_base = {matriz_km, matriz_min};
     
-    // 3. Executa as 20 iterações para os 12 problemas (6 cenários x 2 matrizes)
-    for (int t = 0; t < 2; ++t) {
-        for (const auto& cenario : cenarios) {
+    // 3. Executa as 20 iterações para os 12 problemas 
+    for (size_t c = 0; c < cenarios.size(); ++c) {
+        const auto& cenario = cenarios[c];
+        for (int t = 0; t < 2; ++t) {
+            
+            // Ajusta a numeração: Km recebe 1 a 6, Min recebe 7 a 12
+            int num_problema = (t == 0) ? (c + 1) : (c + 7);
             
             // Recorta a matriz para o tamanho do cenário atual
             vector<vector<double>> submatriz = extrair_submatriz(matrizes_base[t], cenario.indices);
@@ -263,7 +263,7 @@ int main() {
             double soma_custos = 0.0;
             double soma_tempos = 0.0;
             
-            // Executa 20 vezes independentes
+            // Executa 20 vezes
             for (int i = 0; i < iteracoes; ++i) {
                 auto inicio = chrono::high_resolution_clock::now();
                 
@@ -287,13 +287,11 @@ int main() {
             arquivo_saida << "Custo medio (20 exec)  : " << soma_custos / iteracoes << "\n";
             arquivo_saida << "Tempo medio de execucao: " << soma_tempos / iteracoes << " segundos\n";
             arquivo_saida << "--------------------------------------------------------\n\n";
-            
-            num_problema++;
         }
     }
     
     arquivo_saida.close();
-    cout << "\nTeste finalizado com sucesso! Verifique o arquivo 'resultados_AG.txt'." << endl;
+    cout << "\nTeste finalizado! Verifique o arquivo 'resultados_AG.txt'." << endl;
     
     return 0;
 }
