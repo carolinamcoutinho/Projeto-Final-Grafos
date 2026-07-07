@@ -3,7 +3,8 @@
 
 CXX := g++
 CXXFLAGS := -Iinclude -Wall
-LDFLAGS :=
+MEMETICO_CXXFLAGS := -O3 -flto
+LDFLAGS := -flto
 
 SRC_DIR := src
 SRCS := $(SRC_DIR)/main.cpp \
@@ -22,6 +23,9 @@ $(TARGET): $(OBJS)
 
 %.o: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
+
+algoritmo_memetico.o: $(SRC_DIR)/algoritmo_memetico.cpp
+	$(CXX) $(CXXFLAGS) $(MEMETICO_CXXFLAGS) -c $< -o $@
 
 clean:
 	del /Q $(OBJS) 2>nul || true
