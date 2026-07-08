@@ -50,11 +50,20 @@ O sistema mapeia o espaço de soluções do PCV utilizando quatro estratégias d
 - Utilitário make instalado.
 
 ### Executando os Testes
-O projeto utiliza um arquivo Makefile para automatizar o build com flags de otimização agressiva (-O3) para garantir máxima eficiência de CPU. Abra o terminal na raiz do projeto e utilize os comandos abaixo:
+O projeto utiliza um arquivo Makefile para automatizar o build com flags de otimização agressiva (-O3) para garantir máxima eficiência de CPU. 
+No uso de Linux, abra o terminal na raiz do projeto e utilize os comandos abaixo:
 
 ```
 make clean
 make
+
+.\main.exe
+```
+
+No uso de Windows, abra o terminal na raiz do projeto e utilize os comandos abaixo:
+
+```
+mingw32-make
 
 .\main.exe
 ```
