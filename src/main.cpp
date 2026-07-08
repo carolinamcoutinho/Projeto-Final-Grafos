@@ -159,8 +159,9 @@ struct ResultadoMemetico
     int problema;
     std::string cenario_nome;
     std::string medida;
-    double custoFinal;
-    double tempoTotal;
+    double menorCusto;   
+    double custoMedio;  
+    double tempoMedio;   
 };
 
 static void salvarResultadosVizinho(const std::string &caminho, const std::vector<ResultadoVizinho> &resultados)
@@ -251,19 +252,18 @@ static void salvarResultadosMemetico(const std::string &caminho, const std::vect
         return;
     }
 
-    arquivo << "=== RESULTADOS DO ALGORITMO MEMETICO ===\n";
+    arquivo << "=== RESULTADOS DO ALGORITMO MEMETICO (PCV) - 12 PROBLEMAS ===\n";
     arquivo << "Busca Local Hibrida Sequencial: 2-opt + Shift + Swap\n\n";
 
     for (const auto &r : resultados)
     {
         arquivo << "-> Problema " << r.problema << ": " << r.medida << " - " << r.cenario_nome << "\n";
-        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
-        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoFinal << "\n";
-        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(2) << r.tempoTotal << " segundos\n";
+        arquivo << "Menor custo encontrado : " << std::fixed << std::setprecision(2) << r.menorCusto << "\n";
+        arquivo << "Custo medio (20 exec)  : " << std::fixed << std::setprecision(2) << r.custoMedio << "\n";
+        arquivo << "Tempo medio de execucao: " << std::fixed << std::setprecision(5) << r.tempoMedio << " segundos\n";
         arquivo << "--------------------------------------------------------\n\n";
     }
 }
-
 static void mostrarMenu()
 {
     std::cout << "\n=== Selecionar algoritmo ===\n";
@@ -481,7 +481,7 @@ static void executarAlgoritmoGenetico(const std::vector<std::vector<double>> &ma
 
 static void executarAlgoritmoMemetico(const std::vector<std::vector<double>> &matriz_km, const std::vector<std::vector<double>> &matriz_min)
 {
-    std::cout << "\n>> Executando Algoritmo Memetico...\n";
+    std::cout << "\n>> Executando Algoritmo Memetico (20 execucoes)...\n";
     auto cenarios = criarCenarios();
     std::vector<ResultadoMemetico> resultados;
 
@@ -499,21 +499,42 @@ static void executarAlgoritmoMemetico(const std::vector<std::vector<double>> &ma
             double taxa_mutacao = 0.05;
             double prob_busca_local = 0.25;
 
-            auto t0 = std::chrono::high_resolution_clock::now();
-            AlgoritmoMemetico am(submatriz, tamanho_pop, geracoes, taxa_mutacao, prob_busca_local);
-            double custoFinal = am.executar();
-            auto t1 = std::chrono::high_resolution_clock::now();
-            double tempoTotal = std::chrono::duration<double>(t1 - t0).count();
+            // Variáveis de controle estatístico idênticas ao Algoritmo Genético
+            double menor_custo = std::numeric_limits<double>::max();
+            double soma_custos = 0.0;
+            double soma_tempos = 0.0;
+            int iteracoes = 20;
 
-            std::cout << "\nCenario: " << cenario.nome << " [" << medida << "]\n";
-            std::cout << "  Custo final: " << std::fixed << std::setprecision(2) << custoFinal << "\n";
-            std::cout << "  Tempo total: " << std::fixed << std::setprecision(6) << tempoTotal << " s\n";
+            for (int i = 0; i < iteracoes; ++i)
+            {
+                auto t0 = std::chrono::high_resolution_clock::now();
+                AlgoritmoMemetico am(submatriz, tamanho_pop, geracoes, taxa_mutacao, prob_busca_local);
+                double custo_encontrado = am.executar();
+                auto t1 = std::chrono::high_resolution_clock::now();
+
+                double tempo_decorrido = std::chrono::duration<double>(t1 - t0).count();
+
+                if (custo_encontrado < menor_custo)
+                    menor_custo = custo_encontrado;
+                
+                soma_custos += custo_encontrado;
+                soma_tempos += tempo_decorrido;
+            }
+
+            double custoMedio = soma_custos / iteracoes;
+            double tempoMedio = soma_tempos / iteracoes;
+
+            std::cout << "\nCenario: " << cenario.nome << " [" << medida << "] concluido.\n";
+            std::cout << "  Menor custo final: " << std::fixed << std::setprecision(2) << menor_custo << "\n";
+            std::cout << "  Custo medio:       " << std::fixed << std::setprecision(2) << custoMedio << "\n";
+            std::cout << "  Tempo medio:       " << std::fixed << std::setprecision(6) << tempoMedio << " s\n";
 
             resultados.push_back({static_cast<int>(idx) * 2 + tipo + 1,
                                   cenario.nome,
                                   medida,
-                                  custoFinal,
-                                  tempoTotal});
+                                  menor_custo,
+                                  custoMedio,
+                                  tempoMedio});
         }
     }
 

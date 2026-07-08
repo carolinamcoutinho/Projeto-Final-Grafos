@@ -2,6 +2,7 @@
 #include <numeric>
 #include <algorithm>
 #include <limits>
+#include <chrono>
 
 using namespace std;
 
@@ -9,8 +10,9 @@ using namespace std;
 AlgoritmoMemetico::AlgoritmoMemetico(const vector<vector<double>>& matriz_problema, int pop, int ger, double mut, double p_busca)
     : matriz(matriz_problema), num_cidades(matriz_problema.size()), tamanho_pop(pop), 
       num_geracoes(ger), taxa_mutacao(mut), prob_busca_local(p_busca) {
-    random_device rd;
-    rng.seed(rd());
+    
+    uint64_t seed = chrono::high_resolution_clock::now().time_since_epoch().count();
+    rng.seed(seed);
 }
 
 double AlgoritmoMemetico::calcular_custo(const Rota& rota) {

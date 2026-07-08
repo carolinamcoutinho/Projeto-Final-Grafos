@@ -1,74 +1,74 @@
 === RESULTADOS DO ALGORITMO GENETICO (PCV) - 12 PROBLEMAS ===
 
 -> Problema 1: Distancia (Km) - 48 cidades (1 a 48)
-Menor custo encontrado : 2318.10
-Custo medio (20 exec)  : 2690.26
-Tempo medio de execucao: 0.46526 segundos
+Menor custo encontrado : 2883.20
+Custo medio (20 exec)  : 2883.20
+Tempo medio de execucao: 0.08544 segundos
 --------------------------------------------------------
 
 -> Problema 2: Tempo (Min) - 48 cidades (1 a 48)
-Menor custo encontrado : 2453.00
-Custo medio (20 exec)  : 2726.50
-Tempo medio de execucao: 0.69800 segundos
+Menor custo encontrado : 2589.00
+Custo medio (20 exec)  : 2589.00
+Tempo medio de execucao: 0.08388 segundos
 --------------------------------------------------------
 
 -> Problema 3: Distancia (Km) - 36 cidades (1 a 36)
-Menor custo encontrado : 1814.70
-Custo medio (20 exec)  : 2090.50
-Tempo medio de execucao: 0.53706 segundos
+Menor custo encontrado : 2204.90
+Custo medio (20 exec)  : 2204.90
+Tempo medio de execucao: 0.07427 segundos
 --------------------------------------------------------
 
 -> Problema 4: Tempo (Min) - 36 cidades (1 a 36)
-Menor custo encontrado : 1769.00
-Custo medio (20 exec)  : 2013.35
-Tempo medio de execucao: 0.59077 segundos
+Menor custo encontrado : 1957.00
+Custo medio (20 exec)  : 1957.00
+Tempo medio de execucao: 0.08003 segundos
 --------------------------------------------------------
 
 -> Problema 5: Distancia (Km) - 24 cidades (1 a 24)
-Menor custo encontrado : 1352.50
-Custo medio (20 exec)  : 1467.51
-Tempo medio de execucao: 0.54540 segundos
+Menor custo encontrado : 1382.50
+Custo medio (20 exec)  : 1382.50
+Tempo medio de execucao: 0.07531 segundos
 --------------------------------------------------------
 
 -> Problema 6: Tempo (Min) - 24 cidades (1 a 24)
-Menor custo encontrado : 1287.00
-Custo medio (20 exec)  : 1361.75
-Tempo medio de execucao: 0.41832 segundos
+Menor custo encontrado : 1288.00
+Custo medio (20 exec)  : 1288.00
+Tempo medio de execucao: 0.06896 segundos
 --------------------------------------------------------
 
 -> Problema 7: Distancia (Km) - 12 cidades (1 a 12)
 Menor custo encontrado : 672.70
-Custo medio (20 exec)  : 679.22
-Tempo medio de execucao: 0.17924 segundos
+Custo medio (20 exec)  : 672.70
+Tempo medio de execucao: 0.06339 segundos
 --------------------------------------------------------
 
 -> Problema 8: Tempo (Min) - 12 cidades (1 a 12)
 Menor custo encontrado : 606.00
-Custo medio (20 exec)  : 608.20
-Tempo medio de execucao: 0.16762 segundos
+Custo medio (20 exec)  : 606.00
+Tempo medio de execucao: 0.08592 segundos
 --------------------------------------------------------
 
 -> Problema 9: Distancia (Km) - 7 cidades (1,7,8,9,10,11,12)
 Menor custo encontrado : 438.30
 Custo medio (20 exec)  : 438.30
-Tempo medio de execucao: 0.02526 segundos
+Tempo medio de execucao: 0.01143 segundos
 --------------------------------------------------------
 
 -> Problema 10: Tempo (Min) - 7 cidades (1,7,8,9,10,11,12)
 Menor custo encontrado : 364.00
 Custo medio (20 exec)  : 364.00
-Tempo medio de execucao: 0.02418 segundos
+Tempo medio de execucao: 0.01000 segundos
 --------------------------------------------------------
 
 -> Problema 11: Distancia (Km) - 6 cidades (1 a 6)
 Menor custo encontrado : 344.90
 Custo medio (20 exec)  : 344.90
-Tempo medio de execucao: 0.02176 segundos
+Tempo medio de execucao: 0.01000 segundos
 --------------------------------------------------------
 
 -> Problema 12: Tempo (Min) - 6 cidades (1 a 6)
 Menor custo encontrado : 305.00
 Custo medio (20 exec)  : 305.00
-Tempo medio de execucao: 0.02345 segundos
+Tempo medio de execucao: 0.01106 segundos
 --------------------------------------------------------
 
