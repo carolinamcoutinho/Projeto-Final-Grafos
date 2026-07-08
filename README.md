@@ -57,7 +57,7 @@ No uso de Linux, abra o terminal na raiz do projeto e utilize os comandos abaixo
 make clean
 make
 
-.\main
+./main
 ```
 
 No uso de Windows, abra o terminal na raiz do projeto e utilize os comandos abaixo:
